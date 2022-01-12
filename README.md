@@ -1,0 +1,1 @@
+This repo is all my notes over Data Structures & Algorithms in Python during my interview prep. 
