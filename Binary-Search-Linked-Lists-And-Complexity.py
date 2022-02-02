@@ -120,3 +120,41 @@ def binary_search(lo, hi, condition):
     return -1
 
 # The worse case complexity or running time of binary search is O(log N) provided the complexity of the condition used to determine whether the answer lies before, after or at a given position is O(1).
+
+# the binary_search function can be used to solve other problems too. It is a tested piece of logic.
+
+# Question: Given an array of integers nums sorted is ascending order, find the starting and ending position of a given number.
+
+# This differs from the problem in only two significant ways:
+# 1. The numbers are sorted in increasing order.
+# 2. We are looking for both the start and end index.
+
+def first_position(nums, target):
+    def condition(mid):
+        if nums[mid] == target:
+            if mid > 0 and nums[mid-1] == target:
+                return "left"
+            return "found"
+        elif nums[mid] < target:
+            return "right"
+        else:
+            return "left"
+    return binary_search(0, len(nums) - 1, condition)
+
+def last_position(nums, target):
+    def condition(mid):
+        if nums[mid] == target:
+            if mid > 0 and nums[mid+1] == target:
+                return "right"
+            return "found"
+        elif nums[mid] < target:
+            return "right"
+        else:
+            return "left"
+    return binary_search(0, len(nums) - 1, condition)
+
+def first_and_last_position(nums, target):
+    return first_position(nums, target), last_position(nums, target)
+
+    
+    
